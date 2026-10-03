@@ -12,6 +12,7 @@ import { WorkExperience } from './components/WorkExperience';
 import { TechnicalProjects } from './components/TechnicalProjects';
 import { WorkflowBlueprints } from './components/WorkflowBlueprints';
 import { RoiEstimator } from './components/RoiEstimator';
+import { GoogleDriveHub } from './components/GoogleDriveHub';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
@@ -81,6 +82,9 @@ export default function App() {
 
           {/* ROI Estimator */}
           <RoiEstimator />
+
+          {/* Google Drive Automation Vault & Workspace Hub */}
+          <GoogleDriveHub />
 
           {/* Let's Eliminate the Busywork / Contact Section */}
           <ContactSection />

@@ -61,6 +61,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             GAME <span>🎮</span>
           </button>
           <button
+            onClick={() => scrollTo('drive')}
+            className="hover:text-slate-900 transition-colors uppercase flex items-center gap-1 cursor-pointer text-sky-700"
+          >
+            DRIVE <span>☁️</span>
+          </button>
+          <button
             onClick={() => scrollTo('contact')}
             className="hover:text-slate-900 transition-colors uppercase cursor-pointer"
           >
@@ -132,6 +138,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="block w-full text-left py-1 text-slate-700 hover:text-rose-600 font-medium"
           >
             GAME 🎮
+          </button>
+          <button
+            onClick={() => scrollTo('drive')}
+            className="block w-full text-left py-1 text-sky-700 hover:text-sky-900 font-medium"
+          >
+            DRIVE ☁️
           </button>
           <button
             onClick={() => scrollTo('contact')}

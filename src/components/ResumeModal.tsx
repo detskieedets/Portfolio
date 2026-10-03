@@ -1,7 +1,22 @@
-import React from 'react';
-import { X, Printer, Download, MapPin, Phone, Mail, CheckCircle2, Sparkles, Briefcase, GraduationCap, Award } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  X,
+  Printer,
+  Download,
+  MapPin,
+  Phone,
+  Mail,
+  CheckCircle2,
+  Sparkles,
+  Briefcase,
+  GraduationCap,
+  Award,
+  HardDrive,
+} from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { useAvatar } from '../context/AvatarContext';
+import { googleSignIn, getAccessToken } from '../services/firebaseAuth';
+import { saveDocumentToDrive } from '../services/googleDriveService';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -10,11 +25,71 @@ interface ResumeModalProps {
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const { avatarUrl } = useAvatar();
+  const [driveSaving, setDriveSaving] = useState(false);
+  const [driveSaved, setDriveSaved] = useState(false);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
     sounds.playClick();
     window.print();
+  };
+
+  const handleSaveToDrive = async () => {
+    sounds.playCoin();
+    setDriveSaving(true);
+    try {
+      let token = await getAccessToken();
+      if (!token) {
+        const result = await googleSignIn();
+        token = result?.accessToken || null;
+      }
+      if (!token) throw new Error('No access token available');
+
+      const resumeContent = `MARY BERNADETTE ELUSORIO
+Automation & Workflow Engineer
+Cebu City, Philippines | +63 9293559721 | elusoriomary@gmail.com
+
+SUMMARY
+Automation & Workflow Engineer specialized in eliminating operational friction, re-engineering repetitive task flows into automated pipelines, Microsoft Power Platform (Power Automate, SharePoint Lists), and Cisco enterprise network infrastructure.
+
+CORE CAPABILITIES
+1. Tech & Founder Translator: Explains APIs & flows in business terms with zero jargon.
+2. Zero-Friction Operations: Streamlines SOPs, eliminates daily bottlenecks, high adoption.
+3. Fail-Safe Architecture: Robust error handling, fallbacks, clean audit logging.
+
+WORK EXPERIENCE
+• Innodata Knowledge Services Inc. — Automation / Workflow Engineer (May 2024 – Present 2026)
+  - Led enterprise workflow digitalization, re-engineering repetitive tasks into automated pipelines.
+  - Built end-to-end Microsoft Power Platform solutions (Power Automate, SharePoint Lists) for daily admin & ops.
+  - Implemented automated tracking and fail-safe error handling to ensure data integrity across records.
+
+• Multimedia Solutions & Digitalization Office (CIT-U) — Technical Assistant Intern (Apr 2023 – Aug 2023)
+  - Supported lead engineers in managing campus IT operations and hardware-software integrations.
+  - Diagnosed and resolved routine network and multimedia support tickets with rapid turnaround.
+
+KEY TECHNICAL PROJECTS
+• Adaptive Traffic Signal Control System (Python, Computer Vision, ML Logic)
+• Network Infrastructure Simulation (Cisco Packet Tracer, Inter-VLAN, Network Hardening)
+
+EDUCATION
+• Cebu Institute of Technology - University (CIT-U)
+  Bachelor of Science in Information Technology (BSIT)`;
+
+      await saveDocumentToDrive(
+        token,
+        'Mary_Bernadette_Elusorio_Resume_2026.txt',
+        resumeContent,
+        'text/plain'
+      );
+      sounds.playVictory();
+      setDriveSaved(true);
+      setTimeout(() => setDriveSaved(false), 4000);
+    } catch (err: unknown) {
+      console.error('Error saving to Drive:', err);
+    } finally {
+      setDriveSaving(false);
+    }
   };
 
   return (
@@ -30,6 +105,27 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleSaveToDrive}
+              disabled={driveSaving}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center gap-1.5 transition-colors cursor-pointer ${
+                driveSaved
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-sky-600/80 hover:bg-sky-600 text-white'
+              }`}
+            >
+              {driveSaved ? (
+                <>
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Saved to Drive!</span>
+                </>
+              ) : (
+                <>
+                  <HardDrive className="w-3.5 h-3.5" />
+                  <span>{driveSaving ? 'Saving...' : 'Save to Drive'}</span>
+                </>
+              )}
+            </button>
             <button
               onClick={handlePrint}
               className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 text-xs font-mono font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
