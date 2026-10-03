@@ -1,13 +1,9 @@
-Here is your complete, updated `HeroSection.tsx` code.
+Here is the entire, cleanly formatted code for `HeroSection.tsx`.
 
-### Key updates applied:
-
-1. **Dynamic Animated Header**: The terminal/typewriter now loops through your exact phrases (`I build [ real-time edge AI ]`, `I train [ adaptive reinforcement models ]`, `I optimize [ vision pipelines for real hardware ]`).
-2. **Fixed Static Photo**: Points directly to `/profile.png` (with clean fallback handling) instead of depending on dynamic Context or external Unsplash placeholders.
-3. **Aligned Copy & Metadata**: Added your executive leadership callout ("Second-in-Command: Bridging engineering with cross-functional ops"), updated location to Cebu City, and locked in your Cisco/Power Automate stack tags.
+Select all the text inside the code block below, copy it, open **`HeroSection.tsx`** on GitHub, replace everything in that file with this, and commit changes:
 
 ```tsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Zap,
   Gamepad2,
@@ -19,7 +15,6 @@ import {
   Sparkles,
   MapPin,
   CheckCircle2,
-  Camera,
   Layers,
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
@@ -102,7 +97,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             
             {/* Status Pill & Second-in-Command Badge */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#f4ece0]/80 border border-[#e5d5be] text-xs font-mono font-medium text-emerald-800 shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#f4ece0]/80 border border-[#e5d5be] text-xs font-mono font-medium text-emerald-800 shadow-xs">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -153,6 +148,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
               <div className="flex items-center gap-1 ml-1 text-slate-400">
                 <button
+                  type="button"
                   onClick={handlePrevStack}
                   className="hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
                   aria-label="Previous stack item"
@@ -160,6 +156,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
                 <button
+                  type="button"
                   onClick={handleNextStack}
                   className="hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
                   aria-label="Next stack item"
@@ -172,6 +169,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Call To Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => {
                   sounds.playPowerUp();
                   onScrollTo('workflows');
@@ -183,6 +181,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => {
                   sounds.playClick();
                   onScrollTo('game');
@@ -194,6 +193,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => {
                   sounds.playCoin();
                   onOpenResume();
@@ -255,17 +255,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       const target = e.currentTarget;
                       if (!target.dataset.triedFallback) {
                         target.dataset.triedFallback = 'true';
-                        target.src = '/profile.png';
+                        target.src = '/profile.jpg';
                       }
                     }}
                   />
 
-                  {/* Fallback Initial badge in case no image is found */}
+                  {/* Fallback Initial badge if no file is present */}
                   <div className="absolute inset-0 -z-10 flex items-center justify-center bg-slate-200 font-mono text-4xl font-extrabold text-slate-500">
                     MB
                   </div>
 
-                  {/* Zero Busywork badge at bottom */}
+                  {/* Zero Revenue Leakage badge at bottom */}
                   <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
                     <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm border border-amber-200 text-[10px] font-mono font-semibold text-slate-800 shadow-sm">
                       <Zap className="w-3 h-3 text-amber-500 fill-amber-500" />
