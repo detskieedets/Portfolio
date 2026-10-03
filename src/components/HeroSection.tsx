@@ -3,7 +3,7 @@ Here is your complete, updated `HeroSection.tsx` code.
 ### Key updates applied:
 
 1. **Dynamic Animated Header**: The terminal/typewriter now loops through your exact phrases (`I build [ real-time edge AI ]`, `I train [ adaptive reinforcement models ]`, `I optimize [ vision pipelines for real hardware ]`).
-2. **Fixed Static Photo**: Points directly to `/profile.jpg` (with clean fallback handling) instead of depending on dynamic Context or external Unsplash placeholders.
+2. **Fixed Static Photo**: Points directly to `/profile.png` (with clean fallback handling) instead of depending on dynamic Context or external Unsplash placeholders.
 3. **Aligned Copy & Metadata**: Added your executive leadership callout ("Second-in-Command: Bridging engineering with cross-functional ops"), updated location to Cebu City, and locked in your Cisco/Power Automate stack tags.
 
 ```tsx
@@ -248,7 +248,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   className="relative rounded-lg overflow-hidden bg-slate-100 aspect-square flex items-center justify-center group"
                 >
                   <img
-                    src="/profile.jpg"
+                    src="/profile.png"
                     alt="Mary Bernadette Elusorio - Automation and Workflow Engineer"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
