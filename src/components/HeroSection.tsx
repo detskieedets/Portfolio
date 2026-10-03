@@ -1,8 +1,3 @@
-Here is the entire, cleanly formatted code for `HeroSection.tsx`.
-
-Select all the text inside the code block below, copy it, open **`HeroSection.tsx`** on GitHub, replace everything in that file with this, and commit changes:
-
-```tsx
 import React, { useState, useEffect } from 'react';
 import {
   Zap,
@@ -49,7 +44,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [stackIndex, setStackIndex] = useState(0);
 
-  // Typewriter effect for Dynamic Header
   useEffect(() => {
     const fullText = rotatingRoles[roleIndex];
     const typingSpeed = isDeleting ? 30 : 65;
@@ -95,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Left Column: Dynamic Headline & Actions */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Status Pill & Second-in-Command Badge */}
+            {/* Status Pill & Operations Role */}
             <div className="flex flex-wrap items-center gap-2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#f4ece0]/80 border border-[#e5d5be] text-xs font-mono font-medium text-emerald-800 shadow-xs">
                 <span className="relative flex h-2.5 w-2.5">
@@ -114,24 +108,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
 
-            {/* Main Dynamic Greeting Headline */}
+            {/* Main Dynamic Headline */}
             <div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
-                Hi, I'm{' '}
+                Hi, I&apos;m{' '}
                 <span className="bg-gradient-to-r from-[#fb5607] via-[#ea580c] to-[#007fff] bg-clip-text text-transparent">
                   Mary
                 </span>
                 <span className="text-[#007fff]">.</span>
               </h1>
               
-              {/* Dynamic Animated Subtitle / Typewriter */}
               <div className="mt-3 flex items-center min-h-[38px] text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-slate-800 tracking-tight">
                 <span className="text-[#fb5607]">{displayText}</span>
                 <span className="inline-block w-2.5 h-6 ml-1 bg-[#fb5607] animate-pulse"></span>
               </div>
             </div>
 
-            {/* Leadership & Translation Statement */}
+            {/* Subtext */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
               Electronics Engineer bridging the gap between deep technical systems (Edge AI, computer vision, network hardening) and seamless cross-functional team operations.
             </p>
@@ -166,7 +159,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
 
-            {/* Call To Action Buttons */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
@@ -207,7 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* Right Column: Mary's Profile Window Card */}
+          {/* Right Column: Profile Card */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md rounded-2xl bg-[#fffefc] border-2 border-[#f3d9a2] shadow-[0_12px_36px_rgba(251,86,7,0.12)] p-4 sm:p-5 transition-transform hover:-translate-y-1 duration-300">
               
@@ -220,7 +213,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                   </div>
                   <span className="font-mono text-xs font-bold text-slate-700 tracking-tight ml-1">
-                    &lt;M/&gt; mary.sys
+                    {'<M/>'} mary.sys
                   </span>
                 </div>
                 
@@ -234,7 +227,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Portrait Frame */}
               <div className="relative rounded-xl overflow-hidden border border-[#edd7be] bg-gradient-to-b from-amber-50/50 to-orange-50/30 p-2">
                 
-                {/* 100% Reliable Ribbon */}
                 <div className="absolute top-4 right-4 z-10">
                   <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#fb5607] text-white text-[10px] font-bold tracking-wide shadow-sm">
                     <CheckCircle2 className="w-3 h-3 text-white" />
@@ -242,7 +234,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Photo Container */}
                 <div
                   onClick={() => onOpenChangePhoto && onOpenChangePhoto()}
                   className="relative rounded-lg overflow-hidden bg-slate-100 aspect-square flex items-center justify-center group"
@@ -260,12 +251,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     }}
                   />
 
-                  {/* Fallback Initial badge if no file is present */}
                   <div className="absolute inset-0 -z-10 flex items-center justify-center bg-slate-200 font-mono text-4xl font-extrabold text-slate-500">
                     MB
                   </div>
 
-                  {/* Zero Revenue Leakage badge at bottom */}
                   <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
                     <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm border border-amber-200 text-[10px] font-mono font-semibold text-slate-800 shadow-sm">
                       <Zap className="w-3 h-3 text-amber-500 fill-amber-500" />
@@ -305,5 +294,3 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     </section>
   );
 };
-
-```
